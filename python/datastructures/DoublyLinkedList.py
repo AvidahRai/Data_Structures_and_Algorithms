@@ -16,7 +16,6 @@ Methods overview:
     - length()
     - isEmpty()
     - reverse()
-
 """
 from datastructures.TwoPointerNode import TwoPointerNode
 class DoublyLinkedList:
@@ -28,7 +27,7 @@ class DoublyLinkedList:
         - tail pointer
         - length counter
     """
-    def __init__(self:object, value=None)->None:
+    def __init__(self, value=None)->None:
         if value:
             newNode = TwoPointerNode(value)
             self.__head = newNode
@@ -44,7 +43,7 @@ class DoublyLinkedList:
     @return Boolean
     Complexity: T:O(1) S:O(1)
     """
-    def append(self:object, value:any)->bool:
+    def append(self, value:any)->bool:
         newNode = TwoPointerNode(value)
         if self.__length == 0:
             self.__head = newNode
@@ -61,7 +60,7 @@ class DoublyLinkedList:
     @return Boolean
     Complexity: O(1)
     """
-    def prepend(self:object, value:any)->bool:
+    def prepend(self, value:any)->bool:
         newNode = TwoPointerNode(value)
         if self.__length == 0:
             self.__head = newNode
@@ -78,7 +77,7 @@ class DoublyLinkedList:
     @return TwoPointerNode/None 
     Complexity: T:O(1) S:O(1)
     """
-    def pop(self:object)->TwoPointerNode:
+    def pop(self)->TwoPointerNode:
         if self.__length == 0:
             return None
         temp = self.__tail
@@ -97,7 +96,7 @@ class DoublyLinkedList:
     @return TwoPointerNode
     Complexity: O(1)
     """
-    def popFirst(self:object)->TwoPointerNode:
+    def popFirst(self)->TwoPointerNode:
         if self.__length == 0:
             return None
         temp = self.__head
@@ -116,7 +115,7 @@ class DoublyLinkedList:
     @return TwoPointerNode/None
     Complexity: T:O(n) S:O(1)
     """
-    def removeByIndex(self:object, index:int)->TwoPointerNode:
+    def removeByIndex(self, index:int)->TwoPointerNode:
         if index < 0 or index >= self.__length:
             return None
         if index == 0:
@@ -136,7 +135,7 @@ class DoublyLinkedList:
     @return TwoPointerNode/none
     Complexity: T:O(n) S:O(1)
     """
-    def removeByValue(self:object, value:any)->TwoPointerNode:
+    def removeByValue(self, value:any)->TwoPointerNode:
         temp = self.__head
         while temp is not None:
             if temp.value == value:
@@ -183,7 +182,7 @@ class DoublyLinkedList:
     @return bool - True if updated
     Complexity: T:O(n) S:O(1)
     """
-    def setByIndex(self:object, index:int, value:any)->bool:
+    def setByIndex(self, index:int, value:any)->bool:
         temp = self.getByIndex(index)
         if temp is not None:
             temp.value = value
@@ -195,7 +194,7 @@ class DoublyLinkedList:
     @return TwoPointerNode/None
     Complexity: T:O(n) S:O(1)
     """
-    def find(self:object, value:any)->TwoPointerNode:
+    def find(self, value:any)->TwoPointerNode:
         temp = self.__head
         while temp is not None:
             if temp.value == value:
@@ -207,7 +206,7 @@ class DoublyLinkedList:
     Print all items in the list
     Complexity: T:O(n) S:O(1)
     """
-    def print(self:object)->None:
+    def print(self)->None:
         temp = self.__head
         while temp is not None:
             print(temp.value)
@@ -218,7 +217,7 @@ class DoublyLinkedList:
     @return int
     Complexity: O(1)
     """
-    def length(self:object)->int:
+    def length(self)->int:
         return self.__length
     
     """
@@ -226,7 +225,7 @@ class DoublyLinkedList:
     @return boolean
     Complexity: O(1)
     """
-    def isEmpty(self:object)->bool:
+    def isEmpty(self)->bool:
         if self.__length > 0:
             return False
         return True
@@ -236,7 +235,7 @@ class DoublyLinkedList:
     @return Boolean - True if operation completed
     Complexity: T:O(n) S:O(1)  
     """
-    def reverse(self:object)->bool:
+    def reverse(self)->bool:
         if self.__length == 0:
             return False
         if self.__length == 1:

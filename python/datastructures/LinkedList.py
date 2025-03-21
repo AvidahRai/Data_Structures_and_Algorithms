@@ -27,7 +27,7 @@ class LinkedList:
         - tail pointer
         - length counter
     """
-    def __init__(self:object, value=None)->None:
+    def __init__(self, value=None)->None:
         if value:
             newNode = Node(value)
             self.__head = newNode
@@ -43,7 +43,7 @@ class LinkedList:
     @return Boolean
     Complexity: T:O(1) S:O(1)
     """
-    def append(self:object, value:any)->bool:
+    def append(self, value:any)->bool:
         newNode = Node(value)
         if self.__length == 0:
             self.__head = newNode
@@ -59,7 +59,7 @@ class LinkedList:
     @return Boolean
     Complexity: O(1)
     """
-    def prepend(self:object, value:any)->bool:
+    def prepend(self, value:any)->bool:
         newNode = Node(value)
         if self.__length == 0:
             self.__head = newNode
@@ -75,7 +75,7 @@ class LinkedList:
     @return Node
     Complexity: T:O(n) S:O(1)
     """
-    def pop(self:object)->Node:
+    def pop(self)->Node:
         if self.__length == 0:
             return None
         temp = self.__head
@@ -100,7 +100,7 @@ class LinkedList:
     @return Node
     Complexity: O(1)
     """
-    def popFirst(self:object)->Node:
+    def popFirst(self)->Node:
         if self.__length == 0:
             return None        
         
@@ -120,7 +120,7 @@ class LinkedList:
     @return Node/none
     Complexity: T:O(n) S:O(1)
     """
-    def removeByIndex(self:object, index:int)->Node:
+    def removeByIndex(self, index:int)->Node:
         if index < 0 or index >= self.__length:
             return None
         if index == 0:
@@ -139,7 +139,7 @@ class LinkedList:
     @return Node/none
     Complexity: T:O(n) S:O(1)
     """
-    def removeByValue(self:object, value:any)->Node:
+    def removeByValue(self, value:any)->Node:
         temp = self.__head
         prev = None
 
@@ -166,7 +166,7 @@ class LinkedList:
     @return Node/None
     Complexity: T:O(n) S:O(1)
     """
-    def getByIndex(self:object, index:int)->Node:
+    def getByIndex(self, index:int)->Node:
         if index < 0 or index >= self.__length:
             return None
         temp = self.__head
@@ -179,7 +179,7 @@ class LinkedList:
     @return bool - True if updated
     Complexity: T:O(n) S:O(1)
     """
-    def setByIndex(self:object, index:int, value:any)->bool:
+    def setByIndex(self, index:int, value:any)->bool:
         temp = self.getByIndex(index)
         if temp is not None:
             temp.value = value
@@ -191,7 +191,7 @@ class LinkedList:
     @return Node/none
     Complexity: T:O(n) S:O(1)
     """
-    def find(self:object, value:any)->Node:
+    def find(self, value:any)->Node:
         temp = self.__head
         while temp:
             if temp.value == value:
@@ -203,7 +203,7 @@ class LinkedList:
     Print all items in the Linked List
     Complexity: T:O(n) S:O(1)
     """
-    def print(self:object)->None:
+    def print(self)->None:
         temp = self.__head
         while temp is not None:
             print(temp.value)
@@ -214,7 +214,7 @@ class LinkedList:
     @return int
     Complexity: O(1)
     """
-    def length(self:object)->int:
+    def length(self)->int:
         return self.__length
     
     """
@@ -222,7 +222,7 @@ class LinkedList:
     @return boolean
     Complexity: O(1)
     """
-    def isEmpty(self:object)->bool:
+    def isEmpty(self)->bool:
         if self.__length > 0:
             return False
         return True
@@ -232,7 +232,7 @@ class LinkedList:
     @return Boolean - True if operation completed
     Complexity: T:O(n) S:O(1)
     """
-    def reverse(self:object)->None:
+    def reverse(self)->None:
         if self.__length == 0:
             return False
         if self.__length == 1:
