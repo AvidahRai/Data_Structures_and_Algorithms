@@ -4,7 +4,7 @@ HashTable Class
 
 Uses "Seperate Chaining" method using Python Lists for Collision Handling.
 Python List are amortized thus appending to the list are O(1). 
-When the list runs out of capacity, Python automatically resizes the internal memory buffer (usually 2×)
+Resize not implemented yet
 
 Methods overview:
     - _hash(key) Private method
@@ -17,7 +17,6 @@ Methods overview:
     - capacity()
     - numItems()
     - isEmpty()
-    - resize()
     - clear()
 """
 class HashTable:
@@ -25,9 +24,11 @@ class HashTable:
     Creates a hash table using a Python list to store key-value pairs.
     Private Members:-
         - map Python List structure to hold the data. Default size is 10
+        - numItems No of items on the HashTable manually tracked to keep O(1) complexity
     """
     def __init__(self, size=10):
         self.__map = [None] * size
+        self.__numItems = 0
 
     """
     Private method - Computes a hash value for the given key.
@@ -45,21 +46,24 @@ class HashTable:
     @return Bool
     Complexity: T:O(k), where k = length of the key | S:O(1)
     """
-    def setItem(self, key:any, value:any)->bool:
+    def setItem(self, key:any, value:any) -> bool:
         if value is None:
             return False
+
         index = self.__hashSum(key)
 
-        if self.__map[index] == None:
+        if self.__map[index] is None:
             self.__map[index] = []
-        
+
         for item in self.__map[index]:
             if item[0] == key:
                 item[1] = value
-            return True
+                return True
 
-        self.__map[index].append([key,value])
+        self.__map[index].append([key, value])
+        self.__numItems += 1
         return True
+
     
     """
     Retrieves the value for a given key.
@@ -100,6 +104,7 @@ class HashTable:
         for i in range(len(self.__map[index])):
             if self.__map[index][i][0] == key:
                 self.__map[index].pop(i)
+                self.__numItems -= 1
                 return True
         return False
 
@@ -136,14 +141,10 @@ class HashTable:
     """
     Returns the number of key-value pairs stored in the hash table.
     @return int
-    Complexity: T:O(n), S:O(1)
+    Complexity: O(1)
     """
     def numItems(self)->int:
-        no_of_items = 0
-        for item in self.__map:
-            if item is not None:
-                no_of_items += len(item)
-        return no_of_items
+        return self.__numItems
 
     """
     Checks if the Hash Table is empty.
@@ -158,12 +159,12 @@ class HashTable:
         return True
 
     """
-    Resize  
+    Resize - Not Implemented yet
     @return None
     Complexity: T:O(n) S:O(1)
     """    
     def resize(self):
-        pass 
+        pass
     
     """
     Clears all items 
@@ -173,3 +174,4 @@ class HashTable:
     def clear(self)->None:
         for i in range(len(self.__map)):
             self.__map[i] = None
+        self.__numItems = 0
